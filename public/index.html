@@ -64,23 +64,50 @@
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="#">New</a></li>
           </ul>
+          <hr>
+          <h2>New Post</h2>
+          <form>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control"
+                                  id="inputTitle" placeholder="title">
+            </div>
+            <div class="form-group">
+              <label
+                 for="summary">Summary</label>
+              <textarea
+                     class="form-control"
+                     id="inputSummary"
+                     rows="3"
+                     placeholder="Summary"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="url">Url</label>
+              <input type="text" class="form-control"
+                                  id="inputUrl" placeholder="url">
+            </div>
+            <button
+                     type="submit"
+                     class="btn
+                     btn-default">Submit</button>
+          </form>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Trending Posts</h1>
           <div class="row">
             <div class="btn-group-vertical col-md-1" role="group" aria-label="Vertical
-              button group" style="margin-top: 10px;">
+            button group" style="margin-top: 10px;">
               <button type="button" class="btn
-                btn-default"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
+              btn-default"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
               <button type="button" class="btn
-                btn-default"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
+              btn-default"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
             </div>
             <div class="media col-md-11">
               <div class="media-left">
                 <a href="#">
                   <img class="media-object"
-                  src="http://thecatapi.com/api/images/get?format=src&size=small"
-                  height="50px">
+                       src="http://thecatapi.com/api/images/get?format=src&size=small"
+                       height="50px">
                 </a>
               </div>
               <div class="media-body">
