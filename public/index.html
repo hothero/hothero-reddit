@@ -118,14 +118,16 @@
   </body>
 <script type="text/x-template" id="post">
 <div class="row">
-  <div class="btn-group-vertical col-md-1" role="group" aria-label="Vertical
+  <div class="btn-group-vertical col-md-2" role="group" aria-label="Vertical
   button group" style="margin-top: 10px;">
     <button type="button" class="btn
-    btn-default"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
+    btn-default" style="white-space: normal"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
+    <p style="background-color: #d7d7d7; text-align: center; margin: 0px;">{{ data.vote_count
+    }}</p>
     <button type="button" class="btn
-    btn-default"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
+    btn-default" style="white-space: normal"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
   </div>
-  <div class="media col-md-11">
+  <div class="media col-md-10">
     <div class="media-left">
       <a href="#">
         <img class="media-object"
@@ -138,6 +140,7 @@
       {{ data.summary }}
     </div>
   </div>
+  <hr>
 </div>
 </script>
 
