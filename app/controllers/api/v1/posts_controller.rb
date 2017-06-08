@@ -2,7 +2,7 @@ module Api::V1
   class PostsController < ApplicationController
     # Generic API stuff here
     def index
-      render json: $posts.values
+      render json: $posts.values[0..19]
     end
 
     def popular
@@ -41,7 +41,7 @@ module Api::V1
     end
 
     def sort_by_vote_count(posts)
-      posts.sort_by { |post| -post.vote_count }
+      posts.sort_by { |post| -post.vote_count }[0..19]
     end
   end
 end
