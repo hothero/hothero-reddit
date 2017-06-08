@@ -55,9 +55,13 @@
             <!-- <li><a href="#">Profile</a></li> -->
             <!-- <li><a href="#">Help</a></li> -->
           </ul>
+          <button class="btn btn-default" id="clear-btn">Clear Data</button>
+          <button class="btn btn-default" id="random-btn">Random Data</button>
           <form class="navbar-form navbar-right" id="search-form">
             <input type="text" class="form-control" placeholder="Search..."
              name="keyword" id="search-keyword">
+            <button type="submit"
+                    class="btn btn-default">Search</button>
           </form>
         </div>
       </div>
@@ -208,6 +212,18 @@ $(document).ready(function() {
   $("#search-form").submit(function(event) {
     event.preventDefault();
     $.getJSON("/api/v1/posts/search?keyword="+$("#search-keyword").val(), function(data) {
+      posts_obj.posts = data;
+    })
+  })
+
+  $("#clear-btn").click(function(){
+    $.getJSON("/api/v1/posts/clear", function(data) {
+      posts_obj.posts = data;
+    })
+  })
+
+  $("#random-btn").click(function(){
+    $.getJSON("/api/v1/posts/random", function(data) {
       posts_obj.posts = data;
     })
   })

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
         collection do
           get "popular", to: "posts#popular"
           get "search", to: "posts#search"
+          get "clear", to: "posts#clear"
+          get "random", to: "posts#random"
         end
       end
     end
