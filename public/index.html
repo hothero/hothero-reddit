@@ -22,6 +22,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="http://getbootstrap.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://unpkg.com/vue"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -92,31 +93,10 @@
                      btn-default">Submit</button>
           </form>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
+          id="posts-div">
           <h1 class="page-header">Trending Posts</h1>
-          <div class="row">
-            <div class="btn-group-vertical col-md-1" role="group" aria-label="Vertical
-            button group" style="margin-top: 10px;">
-              <button type="button" class="btn
-              btn-default"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
-              <button type="button" class="btn
-              btn-default"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
-            </div>
-            <div class="media col-md-11">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object"
-                       src="http://thecatapi.com/api/images/get?format=src&size=small"
-                       height="50px">
-                </a>
-              </div>
-              <div class="media-body">
-                <a href="#"><h4 class="media-heading">Media
-                    heading</h4></a>
-                ...
-              </div>
-            </div>
-          </div>
+          <post></post>
         </div>
       </div>
     </div>
@@ -132,4 +112,42 @@
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
+<script type="text/x-template" id="post">
+<div class="row">
+  <div class="btn-group-vertical col-md-1" role="group" aria-label="Vertical
+  button group" style="margin-top: 10px;">
+    <button type="button" class="btn
+    btn-default"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
+    <button type="button" class="btn
+    btn-default"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
+  </div>
+  <div class="media col-md-11">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object"
+              src="http://thecatapi.com/api/images/get?format=src&size=small"
+              height="50px">
+      </a>
+    </div>
+    <div class="media-body">
+      <a href="#"><h4 class="media-heading">Media
+          heading</h4></a>
+      ...
+    </div>
+  </div>
+</div>
+</script>
+
+<script>
+Vue.component('post', {
+  template: '#post'
+})
+
+var posts = new Vue({
+  el: '#posts-div',
+  data: {
+  }
+})
+</script>
+
 </html>
