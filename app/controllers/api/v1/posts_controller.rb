@@ -1,7 +1,6 @@
 module Api::V1
   class PostsController < ApplicationController
     # Generic API stuff here
-    $posts = {} # hash keys for indexing
     def index
       render json: $posts.values
     end
