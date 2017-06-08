@@ -161,14 +161,12 @@ Vue.component('post', {
     upvote: function() {
       $.get("api/v1/posts/"+this.data.id+"/upvote", function(){
         posts_obj.fetchData()
-        alert("success")
       })
     },
 
     downvote: function() {
       $.get("api/v1/posts/"+this.data.id+"/downvote", function(){
         posts_obj.fetchData()
-        alert("success")
       })
     }
   }
@@ -185,7 +183,7 @@ var posts_obj = new Vue({
   methods: {
     fetchData: function () {
       var self = this
-      $.getJSON("/api/v1/posts.json", function (data) {
+      $.getJSON("/api/v1/posts/popular.json", function (data) {
         self.posts = data
       })
     }
