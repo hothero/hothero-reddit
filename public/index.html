@@ -96,7 +96,11 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
           id="posts-div">
           <h1 class="page-header">Trending Posts</h1>
-          <post></post>
+          <post
+            v-for="post in posts"
+            v-bind:data="post"
+            v-bind:key="post.id">
+          </post>
         </div>
       </div>
     </div>
@@ -130,9 +134,8 @@
       </a>
     </div>
     <div class="media-body">
-      <a href="#"><h4 class="media-heading">Media
-          heading</h4></a>
-      ...
+      <a href="#"><h4 class="media-heading">{{ data.title }}</h4></a>
+      {{ data.summary }}
     </div>
   </div>
 </div>
@@ -140,12 +143,31 @@
 
 <script>
 Vue.component('post', {
-  template: '#post'
+  template: '#post',
+  props: {
+    data: Object
+  }
 })
 
-var posts = new Vue({
+var posts_obj = new Vue({
   el: '#posts-div',
   data: {
+    posts: []
+  },
+  created: function () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData: function () {
+      var xhr = new XMLHttpRequest()
+        var self = this
+        xhr.open('GET', "/api/v1/posts")
+        xhr.onload = function () {
+          self.posts =
+            JSON.parse(xhr.responseText)
+        }
+      xhr.send()
+    }
   }
 })
 </script>
