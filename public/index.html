@@ -71,10 +71,10 @@
           </ul>
           <hr>
           <h2>New Post</h2>
-          <form>
+          <form id="new-post-form">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control"
+              <input type="text" class="form-control" name="title"
                                   id="inputTitle" placeholder="title">
             </div>
             <div class="form-group">
@@ -84,11 +84,12 @@
                      class="form-control"
                      id="inputSummary"
                      rows="3"
-                     placeholder="Summary"></textarea>
+                     placeholder="Summary"
+                     name="summary"></textarea>
             </div>
             <div class="form-group">
               <label for="url">Url</label>
-              <input type="text" class="form-control"
+              <input type="text" class="form-control" name="url"
                                   id="inputUrl" placeholder="url">
             </div>
             <button
@@ -190,6 +191,22 @@ var posts_obj = new Vue({
     }
   }
 })
+
+$(document).ready(function() {
+  $("#new-post-form").submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/api/v1/posts",
+      data: $(this).serialize(),
+      success: function() {
+        posts_obj.fetchData();
+      }
+    })
+
+  })
+})
+
 </script>
 
 </html>
