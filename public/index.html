@@ -23,6 +23,10 @@
     <!--[if lt IE 9]><script src="http://getbootstrap.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="https://unpkg.com/vue"></script>
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -120,12 +124,14 @@
 <div class="row">
   <div class="btn-group-vertical col-md-2" role="group" aria-label="Vertical
   button group" style="margin-top: 10px;">
-    <button type="button" class="btn
-    btn-default" style="white-space: normal"><i class="glyphicon glyphicon-arrow-up"></i>Up</button>
+    <button type="button" v-on:click="upvote"
+      class="btn btn-default" style="white-space: normal">
+      <i class="glyphicon glyphicon-arrow-up"></i>Up</button>
     <p style="background-color: #d7d7d7; text-align: center; margin: 0px;">{{ data.vote_count
     }}</p>
-    <button type="button" class="btn
-    btn-default" style="white-space: normal"><i class="glyphicon glyphicon-arrow-down"></i>Down</button>
+    <button type="button" v-on:click="downvote"
+      class="btn btn-default" style="white-space: normal">
+      <i class="glyphicon glyphicon-arrow-down"></i>Down</button>
   </div>
   <div class="media col-md-10">
     <div class="media-left">
@@ -149,6 +155,21 @@ Vue.component('post', {
   template: '#post',
   props: {
     data: Object
+  },
+  methods: {
+    upvote: function() {
+      $.get("api/v1/posts/"+this.data.id+"/upvote", function(){
+        posts_obj.fetchData()
+        alert("success")
+      })
+    },
+
+    downvote: function() {
+      $.get("api/v1/posts/"+this.data.id+"/downvote", function(){
+        posts_obj.fetchData()
+        alert("success")
+      })
+    }
   }
 })
 
@@ -162,14 +183,10 @@ var posts_obj = new Vue({
   },
   methods: {
     fetchData: function () {
-      var xhr = new XMLHttpRequest()
-        var self = this
-        xhr.open('GET', "/api/v1/posts")
-        xhr.onload = function () {
-          self.posts =
-            JSON.parse(xhr.responseText)
-        }
-      xhr.send()
+      var self = this
+      $.getJSON("/api/v1/posts.json", function (data) {
+        self.posts = data
+      })
     }
   }
 })
