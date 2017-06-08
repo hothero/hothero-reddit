@@ -1,9 +1,10 @@
 class Post
-  attr_accessor :title, :summary, :url, :img_url, :created_at
+  attr_accessor :id, :title, :summary, :url, :img_url, :created_at
 
-  def initialize(title:, summary:, url:, img_url: "")
+  def initialize(id:, title:, summary:, url:, img_url: "")
     # TODOs: refactor to eval or hashify
 
+    self.id = id
     self.title = title
     self.summary = summary
     self.url = url
