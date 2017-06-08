@@ -5,6 +5,14 @@ module Api::V1
       render json: $posts.values
     end
 
+    def popular
+      render json: $posts.values.sort_by { |post| -post.vote_count }
+    end
+
+    def search
+      render json: $posts.values.find_all { |post| post.title.include?(params[:keyword]) }
+    end
+
     def create
       # TODO: refactor the passing params
       # slice: fetch only valid params

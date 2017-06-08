@@ -7,6 +7,11 @@ Rails.application.routes.draw do
           get "upvote", to: "votes#up"
           get "downvote", to: "votes#down"
         end
+
+        collection do
+          get "popular", to: "posts#popular"
+          get "search", to: "posts#search"
+        end
       end
     end
   end
