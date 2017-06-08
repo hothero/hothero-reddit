@@ -28,8 +28,7 @@ module Api::V1
     end
 
     def create
-      # TODO: refactor the passing params
-      # slice: fetch only valid params
+      # TODO: refactor the passing params by smarter way
       id = $posts.size + 1
       $posts[id.to_s] = Post.new(id: id, title: post_params[:title], summary: post_params[:summary], url: post_params[:url])
     end

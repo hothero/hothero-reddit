@@ -1,6 +1,6 @@
 module Api::V1
   class VotesController < ApplicationController
-    # ruby is strictly called by value
+    # ruby is strictly called by value, so we can't refactor the post query
 
     def up
       post_id = params[:id]
