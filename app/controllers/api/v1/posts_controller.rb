@@ -6,11 +6,11 @@ module Api::V1
     end
 
     def popular
-      render json: $posts.values.sort_by { |post| -post.vote_count }
+      render json: sort_by_vote_count($posts.values)
     end
 
     def search
-      render json: $posts.values.find_all { |post| post.title.include?(params[:keyword]) }
+      render json: sort_by_vote_count($posts.values.find_all { |post| post.title.include?(params[:keyword]) })
     end
 
     def create
@@ -24,6 +24,10 @@ module Api::V1
 
     def post_params
       params.permit(:title, :summary, :url, :img_url)
+    end
+
+    def sort_by_vote_count(posts)
+      posts.sort_by { |post| -post.vote_count }
     end
   end
 end
