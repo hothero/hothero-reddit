@@ -164,13 +164,13 @@ Vue.component('post', {
   },
   methods: {
     upvote: function() {
-      $.get("api/v1/posts/"+this.data.id+"/upvote", function(){
+      $.get("/api/v1/posts/"+this.data.id+"/upvote", function(){
         posts_obj.fetchData()
       })
     },
 
     downvote: function() {
-      $.get("api/v1/posts/"+this.data.id+"/downvote", function(){
+      $.get("/api/v1/posts/"+this.data.id+"/downvote", function(){
         posts_obj.fetchData()
       })
     }
